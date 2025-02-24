@@ -19,7 +19,7 @@ RUN corepack install -g pnpm@10.4.1
 # Copy monorepo root files for dependency installation
 # ------------------------------------------------
 # These files include the monorepo config and lockfile, adjust if needed.
-COPY package.json pnpm-lock.yaml* pnpm-workspace.yaml* ./
+COPY package.json pnpm-lock.yaml* pnpm-workspace.yaml* tsconfig.json tsconfig.base.json ./
 
 # Copy all workspace source code first
 COPY packages ./packages
@@ -28,8 +28,10 @@ COPY www ./www
 # Install all dependencies (this installs dependencies for all workspaces)
 RUN pnpm install --frozen-lockfile
 
-# Build all packages first
-RUN pnpm --filter "./packages/*" build
+# Build packages in the correct order
+RUN pnpm --filter "@instantdb/core" build && \
+    pnpm --filter "@instantdb/admin" build && \
+    pnpm --filter "./packages/*" --filter="!@instantdb/core" --filter="!@instantdb/admin" build
 
 # Install workspace dependencies explicitly with production=false
 WORKDIR /app
