@@ -26,9 +26,14 @@ WORKDIR /app
 
 ## Copy deps.edn and source code directories (Makefile has been removed since we're moving tasks into Dockerfile)
 COPY deps.edn ./
+COPY build.clj ./
 COPY src/ src/
 COPY resources/ resources/
-COPY data/ data/
+COPY scripts/ scripts/
+COPY dev/ dev/
+COPY dev-resources/ dev-resources/
+COPY dev-postgres/ dev-postgres/
+COPY refinery/ refinery/
 
 RUN clojure -P -M:dev
 RUN clojure -P -M:oss-bootstrap
