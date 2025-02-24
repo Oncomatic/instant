@@ -16,7 +16,7 @@ RUN wget -qO- https://get.pnpm.io/install.sh | ENV="$HOME/.shrc" SHELL="$(which 
 COPY package.json pnpm-lock.yaml* pnpm-workspace.yaml* ./
 
 # Install all dependencies (this installs dependencies for all workspaces)
-RUN pnpm install --frozen-lockfile
+RUN source /root/.shrc && pnpm install --frozen-lockfile
 
 # ------------------------------------------------
 # Copy the workspace source code
@@ -26,13 +26,13 @@ COPY packages ./packages
 
 # Install workspace dependencies explicitly with production=false
 WORKDIR /app
-RUN pnpm install --filter ./www... --prod false
+RUN source /root/.shrc && pnpm install --filter ./www... --prod false
 
 # Change working directory to the Next.js app directory
 WORKDIR /app/www
 
 # Build the Next.js application for production
-RUN pnpm run build
+RUN source /root/.shrc && pnpm run build
 
 # ----------------------------------------------
 # Stage 2: Runner
@@ -45,6 +45,10 @@ WORKDIR /app
 # Copy the built Next.js application from the builder stage
 COPY --from=builder /app/www ./
 
+# Copy pnpm installation and source it in the CMD
+COPY --from=builder /root/.shrc /root/.shrc
+COPY --from=builder /root/.local/share/pnpm /root/.local/share/pnpm
+
 # Expose the port that Next.js uses (default is 3000)
 EXPOSE 3000
 
@@ -53,4 +57,4 @@ ENV NODE_ENV=production
 
 # Command to start the Next.js application.
 # It is assumed that the "start" script in package.json runs "next start".
-CMD ["pnpm", "start"]
+CMD ["/bin/sh", "-c", "source /root/.shrc && exec pnpm start"]
