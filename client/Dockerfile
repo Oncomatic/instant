@@ -21,9 +21,11 @@ RUN pnpm install
 # ------------------------------------------------
 # Copy the Next.js application source code
 # ------------------------------------------------
-# In this example we assume that your frontend Next.js code lives in the "www" folder.
-# If your code is in a different folder (for example, "client"), change the source path below.
 COPY www ./www
+
+# Install www workspace dependencies explicitly
+WORKDIR /app
+RUN pnpm install --filter www
 
 # Change working directory to the Next.js app directory
 WORKDIR /app/www
