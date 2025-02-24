@@ -7,8 +7,7 @@ FROM node:18-alpine AS builder
 WORKDIR /app
 
 # Enable corepack so pnpm is available
-RUN npm install --global corepack@latest
-RUN corepack enable && pnpm install -g pnpm@10.4.1
+RUN wget -qO- https://get.pnpm.io/install.sh | ENV="$HOME/.shrc" SHELL="$(which sh)" sh -
 
 # ------------------------------------------------
 # Copy monorepo root files for dependency installation
