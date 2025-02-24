@@ -35,4 +35,4 @@ RUN ls -al /app
 EXPOSE 8888
 EXPOSE 6005
 
-CMD ["bash", "-c", "echo 'Booting up backend w/ local db...'; clojure -X:dev:oss-bootstrap; echo 'Starting server...'; exec clojure -M:dev:run"]
+CMD ["bash", "-c", "echo 'Booting up backend w/ local db...'; clojure -X:oss-bootstrap; echo 'Starting server...'; exec clojure -M:run"]
