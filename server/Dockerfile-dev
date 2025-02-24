@@ -22,11 +22,15 @@ RUN mkdir gomigrate && cd gomigrate && \
       mv migrate /usr/local/bin && \
       cd .. && rm -r gomigrate
 
+WORKDIR /app
+
 # Copy both deps.edn and Makefile
 COPY deps.edn Makefile ./
 
 RUN clojure -P -M:dev
 RUN clojure -P -M:oss-bootstrap
+
+RUN ls -al /app
 
 EXPOSE 8888
 EXPOSE 6005
