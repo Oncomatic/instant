@@ -19,7 +19,7 @@ RUN corepack install -g pnpm@10.4.1
 # Copy monorepo root files for dependency installation
 # ------------------------------------------------
 # These files include the monorepo config and lockfile, adjust if needed.
-COPY package.json pnpm-lock.yaml* pnpm-workspace.yaml* tsconfig.json tsconfig.base.json ./
+COPY package.json pnpm-lock.yaml* pnpm-workspace.yaml* tsconfig.base.json ./
 
 # Copy all workspace source code first
 COPY packages ./packages
