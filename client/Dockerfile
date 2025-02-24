@@ -7,7 +7,8 @@ FROM node:18-alpine AS builder
 WORKDIR /app
 
 # Enable corepack so pnpm is available
-RUN corepack enable
+RUN npm install --global corepack@latest
+RUN corepack enable && pnpm install -g pnpm@10.4.1
 
 # ------------------------------------------------
 # Copy monorepo root files for dependency installation
@@ -16,7 +17,7 @@ RUN corepack enable
 COPY package.json pnpm-lock.yaml* pnpm-workspace.yaml* ./
 
 # Install all dependencies (this installs dependencies for all workspaces)
-RUN pnpm install
+RUN pnpm install --frozen-lockfile
 
 # ------------------------------------------------
 # Copy the workspace source code
@@ -24,9 +25,9 @@ RUN pnpm install
 COPY www ./www
 COPY packages ./packages
 
-# Install workspace dependencies explicitly
+# Install workspace dependencies explicitly with production=false
 WORKDIR /app
-RUN pnpm install --filter ./www
+RUN pnpm install --filter ./www... --prod false
 
 # Change working directory to the Next.js app directory
 WORKDIR /app/www
