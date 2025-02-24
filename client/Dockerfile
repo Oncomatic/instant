@@ -20,7 +20,7 @@ RUN corepack enable && \
 COPY package.json pnpm-lock.yaml* pnpm-workspace.yaml* ./
 
 # Install all dependencies (this installs dependencies for all workspaces)
-RUN pnpm install --frozen-lockfile
+RUN pnpm install --frozen-lockfile --filter=./packages/* --filter=./www
 
 # ------------------------------------------------
 # Copy the workspace source code
@@ -30,7 +30,7 @@ COPY packages ./packages
 
 # Install workspace dependencies explicitly with production=false
 WORKDIR /app
-RUN pnpm install --filter ./www... --prod false
+RUN pnpm install --filter ./www... --filter=./packages/* --prod false --ignore-scripts
 
 # Change working directory to the Next.js app directory
 WORKDIR /app/www
