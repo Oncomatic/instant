@@ -19,13 +19,14 @@ COPY package.json pnpm-lock.yaml* pnpm-workspace.yaml* ./
 RUN pnpm install
 
 # ------------------------------------------------
-# Copy the Next.js application source code
+# Copy the workspace source code
 # ------------------------------------------------
 COPY www ./www
+COPY packages ./packages
 
-# Install www workspace dependencies explicitly
+# Install workspace dependencies explicitly
 WORKDIR /app
-RUN pnpm install --filter www
+RUN pnpm install --filter ./www
 
 # Change working directory to the Next.js app directory
 WORKDIR /app/www
@@ -48,7 +49,7 @@ COPY --from=builder /app/www ./
 EXPOSE 3000
 
 # Set Node.js environment to production
-ENV NODE_ENV production
+ENV NODE_ENV=production
 
 # Command to start the Next.js application.
 # It is assumed that the "start" script in package.json runs "next start".
