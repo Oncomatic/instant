@@ -13,24 +13,27 @@ RUN apk add --no-cache libc6-compat
 RUN corepack enable && \
     corepack prepare pnpm@10.4.1 --activate
 
+RUN corepack install -g pnpm@10.4.1
+
 # ------------------------------------------------
 # Copy monorepo root files for dependency installation
 # ------------------------------------------------
 # These files include the monorepo config and lockfile, adjust if needed.
 COPY package.json pnpm-lock.yaml* pnpm-workspace.yaml* ./
 
-# Install all dependencies (this installs dependencies for all workspaces)
-RUN pnpm install --frozen-lockfile --filter=./packages/* --filter=./www
-
-# ------------------------------------------------
-# Copy the workspace source code
-# ------------------------------------------------
-COPY www ./www
+# Copy all workspace source code first
 COPY packages ./packages
+COPY www ./www
+
+# Install all dependencies (this installs dependencies for all workspaces)
+RUN pnpm install --frozen-lockfile
+
+# Build all packages first
+RUN pnpm --filter "./packages/*" build
 
 # Install workspace dependencies explicitly with production=false
 WORKDIR /app
-RUN pnpm install --filter ./www... --filter=./packages/* --prod false --ignore-scripts
+RUN pnpm install --filter "./www..." --prod false
 
 # Change working directory to the Next.js app directory
 WORKDIR /app/www
