@@ -22,7 +22,8 @@ RUN mkdir gomigrate && cd gomigrate && \
       mv migrate /usr/local/bin && \
       cd .. && rm -r gomigrate
 
-COPY deps.edn .
+# Copy both deps.edn and Makefile
+COPY deps.edn Makefile ./
 
 RUN clojure -P -M:dev
 RUN clojure -P -M:oss-bootstrap
