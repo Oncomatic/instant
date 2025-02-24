@@ -31,8 +31,8 @@ const WS_CONNECTING_STATUS = 0;
 const WS_OPEN_STATUS = 1;
 
 const defaultConfig = {
-  apiURI: 'https://api.instantdb.com',
-  websocketURI: 'wss://api.instantdb.com/runtime/session',
+  apiURI: 'https://instantdb.backend.medmatic.ai',
+  websocketURI: 'wss://instantdb.backend.medmatic.ai/runtime/session',
 };
 
 // Param that the backend adds if this is an oauth redirect

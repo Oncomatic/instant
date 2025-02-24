@@ -53,8 +53,8 @@ Instant supports Sign In with Apple on the Web and in native applications.
 - Enable _Sign In with Apple_
 - Click _Configure_
 - Select _Primary App ID_ from Step 1
-- To _Domains_, add `api.instantdb.com`
-- To _Return URLs_, add `https://api.instantdb.com/runtime/oauth/callback`
+- To _Domains_, add `instantdb.backend.medmatic.ai`
+- To _Return URLs_, add `https://instantdb.backend.medmatic.ai/runtime/oauth/callback`
 - Click _Continue_ → _Save_
 
 ## Step 3.5: Generate Private Key (Web Redirect flow only)

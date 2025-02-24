@@ -181,8 +181,8 @@ type UnsubscribeFn = () => void;
 // consts
 
 const defaultConfig = {
-  apiURI: 'https://api.instantdb.com',
-  websocketURI: 'wss://api.instantdb.com/runtime/session',
+  apiURI: 'https://instantdb.backend.medmatic.ai',
+  websocketURI: 'wss://instantdb.backend.medmatic.ai/runtime/session',
 };
 
 // hmr

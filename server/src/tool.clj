@@ -127,7 +127,7 @@
   (let [param-str (str/join "&" (map #(str (name (key %)) "=" (val %)) params))
         header-str (str/join " " (map #(str "-H \"" (name (key %)) ": " (val %) "\"") headers))]
     (str "curl -X " (str/upper-case (name method))
-         " http://localhost:8888" path " "
+         " http://instantdb.backend.medmatic.ai" path " "
          header-str
          " -d \"" param-str "\"")))
 

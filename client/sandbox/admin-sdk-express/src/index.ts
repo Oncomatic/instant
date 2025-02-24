@@ -10,7 +10,7 @@ import path from 'path';
 dotenv.config();
 
 const config = {
-  apiURI: 'http://localhost:8888',
+  apiURI: 'http://instantdb.backend.medmatic.ai',
   appId: process.env.INSTANT_APP_ID!,
   adminToken: process.env.INSTANT_ADMIN_TOKEN!,
 };

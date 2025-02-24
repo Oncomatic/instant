@@ -40,13 +40,13 @@ If you press `cmd + shift + 9`, you'll also see a devtool window pop up. This ca
 
 ### Connect to a local backend
 
-Right now all backend requests will go to api.instantdb.com. If you want to develop against your local backend, load [localhost:3000](http://localhost:3000), and set the `devBackend` flag:
+Right now all backend requests will go to instantdb.backend.medmatic.ai. If you want to develop against your local backend, load [localhost:3000](http://localhost:3000), and set the `devBackend` flag:
 
 ```javascript
 localStorage.setItem('devBackend', true);
 ```
 
-Now all requests will go to your local backend at [localhost:8888](http://localhost:8888). If you haven't set up a local backend, follow the [server README](../server/README.md)
+Now all requests will go to your local backend at [instantdb.backend.medmatic.ai](http://instantdb.backend.medmatic.ai). If you haven't set up a local backend, follow the [server README](../server/README.md)
 
 ### Show client logs
 
@@ -73,8 +73,8 @@ You can then connect to this app in a new project with the following snippet
 const APP_ID = '<your app id from your own server>'
 const db = init({
   appId: APP_ID,
-  apiURI: "http://localhost:8888",
-  websocketURI: "ws://localhost:8888/runtime/session",
+  apiURI: "http://instantdb.backend.medmatic.ai",
+  websocketURI: "ws://instantdb.backend.medmatic.ai/runtime/session",
 });
 ```
 

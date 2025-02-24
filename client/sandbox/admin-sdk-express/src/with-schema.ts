@@ -34,7 +34,7 @@ const schema = i.schema({
 });
 
 const db = init({
-  apiURI: 'http://localhost:8888',
+  apiURI: 'http://instantdb.backend.medmatic.ai',
   appId: process.env.INSTANT_APP_ID!,
   adminToken: process.env.INSTANT_ADMIN_TOKEN!,
   schema,

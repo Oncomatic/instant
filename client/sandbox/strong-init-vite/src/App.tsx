@@ -4,8 +4,8 @@ import schema from '../instant.schema.v2';
 const db = init({
   appId: import.meta.env.VITE_INSTANT_APP_ID,
   schema,
-  apiURI: 'http://localhost:8888',
-  websocketURI: 'ws://localhost:8888/runtime/session',
+  apiURI: 'http://instantdb.backend.medmatic.ai',
+  websocketURI: 'ws://instantdb.backend.medmatic.ai/runtime/session',
 });
 
 function App() {

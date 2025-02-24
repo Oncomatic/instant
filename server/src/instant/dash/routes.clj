@@ -1142,7 +1142,7 @@
    To try it out, 
    ```bash
    brew install websocat 
-   websocat ws://localhost:8888/dash/ws_playground 
+   websocat ws://instantdb.backend.medmatic.ai/dash/ws_playground 
    hi 
    break 
    ```"

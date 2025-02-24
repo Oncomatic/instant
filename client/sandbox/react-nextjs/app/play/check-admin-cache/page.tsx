@@ -4,7 +4,7 @@ const ADMIN_TOKEN = '82900c15-faac-495b-b385-9f9e7743b629';
 const db = init({
   appId: APP_ID,
   adminToken: ADMIN_TOKEN,
-  apiURI: 'http://localhost:8888',
+  apiURI: 'http://instantdb.backend.medmatic.ai',
 });
 
 export default async function Page() {

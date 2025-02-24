@@ -92,7 +92,7 @@ type ImpersonationOpts =
 
 function configWithDefaults(config: Config): FilledConfig {
   const defaultConfig = {
-    apiURI: 'https://api.instantdb.com',
+    apiURI: 'https://instantdb.backend.medmatic.ai',
   };
   const r = { ...defaultConfig, ...config };
   return r;
@@ -102,7 +102,7 @@ function instantConfigWithDefaults<
   Schema extends InstantSchemaDef<any, any, any>,
 >(config: InstantConfig<Schema>): InstantConfigFilled<Schema> {
   const defaultConfig = {
-    apiURI: 'https://api.instantdb.com',
+    apiURI: 'https://instantdb.backend.medmatic.ai',
   };
   const r = { ...defaultConfig, ...config };
   return r;

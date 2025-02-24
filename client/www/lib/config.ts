@@ -16,10 +16,10 @@ if (devBackend && isBrowser) {
 const config = {
   apiURI: getLocal('devBackend')
     ? `http://localhost:${localPort}`
-    : 'https://api.instantdb.com',
+    : 'https://instantdb.backend.medmatic.ai',
   websocketURI: getLocal('devBackend')
     ? `ws://localhost:${localPort}/runtime/session`
-    : 'wss://api.instantdb.com/runtime/session',
+    : 'wss://instantdb.backend.medmatic.ai/runtime/session',
 };
 
 export default config;

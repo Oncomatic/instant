@@ -26,7 +26,7 @@ Select "OAuth client ID"
 
 Select "Web application" as the application type.
 
-Add `https://api.instantdb.com/runtime/oauth/callback` as an Authorized redirect URI.
+Add `https://instantdb.backend.medmatic.ai/runtime/oauth/callback` as an Authorized redirect URI.
 
 If you're testing from localhost, **add both `http://localhost`** and `http://localhost:3000` to "Authorized JavaScript origins", replacing `3000` with the port you use.
 For production, add your website's domain.

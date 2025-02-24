@@ -190,8 +190,8 @@
   (-> @config-map :google-oauth-client))
 
 (def server-origin (case (get-env)
-                     :prod "https://api.instantdb.com"
-                     "http://localhost:8888"))
+                     :prod "https://instantdb.backend.medmatic.ai"
+                     "http://instantdb.backend.medmatic.ai"))
 
 (def s3-bucket-name
   (case (get-env)

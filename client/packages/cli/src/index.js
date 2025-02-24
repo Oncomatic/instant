@@ -83,7 +83,7 @@ const instantDashOrigin = dev
 
 const instantBackendOrigin =
   process.env.INSTANT_CLI_API_URI ||
-  (dev ? 'http://localhost:8888' : 'https://api.instantdb.com');
+  (dev ? 'http://instantdb.backend.medmatic.ai' : 'https://instantdb.backend.medmatic.ai');
 
 const PUSH_PULL_OPTIONS = new Set(['schema', 'perms', 'all']);
 

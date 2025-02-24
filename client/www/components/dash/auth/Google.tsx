@@ -158,7 +158,7 @@ export function AddClientForm({
       <div className="rounded border p-4 flex flex-col gap-2 bg-gray-50">
         <p className="overflow-hidden">
           Add{' '}
-          <Copytext value="https://api.instantdb.com/runtime/oauth/callback" />{' '}
+          <Copytext value="https://instantdb.backend.medmatic.ai/runtime/oauth/callback" />{' '}
           to the "Authorized redirect URIs" on your{' '}
           <a
             className="underline"
@@ -327,7 +327,7 @@ const url = db.auth.createAuthorizationURL({
             </Content>
             <Copyable
               label="Redirect URI"
-              value="https://api.instantdb.com/runtime/oauth/callback"
+              value="https://instantdb.backend.medmatic.ai/runtime/oauth/callback"
             />
             <Content>
               <strong>2.</strong> Use the code below to generate a login link in
