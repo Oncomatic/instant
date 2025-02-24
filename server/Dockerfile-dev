@@ -24,8 +24,8 @@ RUN mkdir gomigrate && cd gomigrate && \
 
 WORKDIR /app
 
-# Copy both deps.edn and Makefile
-COPY deps.edn Makefile ./
+## Copy only deps.edn (Makefile has been removed since we're moving tasks into Dockerfile)
+COPY deps.edn ./
 
 RUN clojure -P -M:dev
 RUN clojure -P -M:oss-bootstrap
@@ -35,4 +35,4 @@ RUN ls -al /app
 EXPOSE 8888
 EXPOSE 6005
 
-CMD ["make", "dev-oss"]
+CMD ["bash", "-c", "echo 'Booting up backend w/ local db...'; clojure -X:dev:oss-bootstrap; echo 'Starting server...'; exec clojure -M:dev:run"]
